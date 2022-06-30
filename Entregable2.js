@@ -6,8 +6,6 @@
 //para cada mesa se crea un registro de gastos 
 //y se cancelan los precios 
 
-//Constructor de cada mesa para el array
-
 
 
 function Puesto(CodMesa, Saldo){
@@ -15,31 +13,22 @@ function Puesto(CodMesa, Saldo){
     this.Saldo = Saldo;
 }
 
-let Puestos = [
-    Puesto("mesa1", 0),
-    Puesto("mesa2", 0),
-    Puesto("mesa3", 0),
-    Puesto("mesa4", 0),
-    Puesto("mesa5", 0),
-    Puesto("mesa6", 0),
-    Puesto("mesa7", 0),
-    Puesto("mesa8", 0),
-    Puesto("mesa9", 0),
-    Puesto("mesa10", 0),
-    Puesto("mesa11", 0),   
-    Puesto("puesto12", 0),
-    Puesto("puesto13", 0),
-    Puesto("puesto14", 0),
-    Puesto("puesto15", 0),
-    Puesto("puesto16", 0),
-    Puesto("puesto17", 0),
-];
+let Puestos = [];
+
+//inicializacion de todas las mesas en cero. 
+for (let i=0; i<17; i++){
+    if(i<11){
+        Puestos.push(new Puesto("mesa"+(i+1), 0))
+    }
+    else{
+        Puestos.push(new Puesto("puesto"+(i+1), 0))
+    }
+}
 let RecaudacionTotal = 0;
-var opcion =0;
+let opcion =0;
 
 
 function Pedido(numero){
-    
     monto = parseInt(prompt("por favor ingrese el monto del pedido para agregarlo a la mesa: "));
     Puestos[parseInt(numero)-1].Saldo =  parseInt(Puestos[parseInt(numero)-1].Saldo) + monto
     alert("La mesa: "+Puestos[parseInt(numero)-1].CodMesa+"posee un saldo de: "+Puestos[parseInt(numero)-1].Saldo);
@@ -96,17 +85,17 @@ switch(opcion){
         Pedido(lugar)
         break;
     case 3:
-        
-       // const Mesaslibres[] = Puestos.map(Puestos, (nombre)=>{
-       //     if(Puestos.Saldo==0){
-       //         Mesaslibres.push(nombre)
-       //     }
-       // })
-       // break;
+        const distintosdecero = Puestos.map((elemento) => { if(elemento.Saldo>0){return elemento.CodMesa} })
+        let resultado = "Los puestos disponibles son: \n"
+        distintosdecero.forEach((elemento) => {if(elemento!=null){resultado=resultado+elemento+"\n"}} ) 
+        alert(resultado)
     case 4:
-        
-    break;
+        const total = Puestos.reduce((acumulador, elemento) => acumulador + elemento.Saldo, 0)
+        alert("El total de todas las mesas en servicio es: $"+total)
+        break;
     case 5:
-
+        alert("El total de la recaudación del día hasta el momento: $"+RecaudacionTotal)
+        break;
+    case 6:
         break;
 }
