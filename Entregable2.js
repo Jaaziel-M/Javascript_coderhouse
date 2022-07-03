@@ -50,21 +50,21 @@ function Disponibilidad(busqueda){
 const PagarMesa = (puesto) => {parseInt(Puestos[puesto].Saldo) - parseInt(Puestos[puesto].Saldo)};
 
 
-opcion = prompt(parseInt("Por favor ingrese que consulta desea realizar:\n\nVer o pagar el saldo  de una mesa (1)\nAgregar pedido a una mesa (2)\nConsultar mesas disponibles (3)\n\nAnalytics:\n\nConsultar el total de todas las mesas en este momento (4)\nConsultar la recaudación total del día (5)"))
+opcion = parseInt(prompt("Por favor ingrese que consulta desea realizar:\n\nVer o pagar el saldo  de una mesa (1)\nAgregar pedido a una mesa (2)\nConsultar mesas disponibles (3)\n\nAnalytics:\n\nConsultar el total de todas las mesas en este momento (4)\nConsultar la recaudación total del día (5)"))
 
 while (opcion<1 || opcion>3){
-    opcion = prompt(parseInt("Por favor ingrese que consulta desea realizar:\n\nVer o pagar el saldo  de una mesa (1)\nAgregar pedido a una mesa (2)\nConsultar mesas disponibles (3)\n\nAnalytics:\n\nConsultar el total de todas las mesas en este momento (4)\nConsultar la recaudación total del día (5)\nSalir (6)"))
+    opcion = parseInt(prompt("Por favor ingrese que consulta desea realizar:\n\nVer o pagar el saldo  de una mesa (1)\nAgregar pedido a una mesa (2)\nConsultar mesas disponibles (3)\n\nAnalytics:\n\nConsultar el total de todas las mesas en este momento (4)\nConsultar la recaudación total del día (5)\nSalir (6)"))
 }
 
 switch(opcion){
     case 1:
-        let lugar = prompt(parseInt("por favor ingrese un numero de mesa:\n\nMesas (Del 1 al 11)\nPuestos (Del 12 al 17)"))
+        let lugar = parseint(prompt("por favor ingrese un numero de mesa:\n\nMesas (Del 1 al 11)\nPuestos (Del 12 al 17)"))
         while (lugar<1 || lugar>17){
-            lugar = prompt(parseInt("por favor ingrese un numero de mesa:\n\nMesas (Del 1 al 11)\nPuestos (Del 12 al 17)"))
+            lugar = parseInt(prompt("por favor ingrese un numero de mesa:\n\nMesas (Del 1 al 11)\nPuestos (Del 12 al 17)"))
         }
-        opcion = prompt(parseInt("Desea pagar o consultar el saldo del puesto seleccionado?\nPagar saldo (1)\nConsultar saldo (2)\nSalir (3)"))
+        opcion = parseInt(prompt("Desea pagar o consultar el saldo del puesto seleccionado?\nPagar saldo (1)\nConsultar saldo (2)\nSalir (3)"))
         while(opcion < 1 || opcion >3){
-            opcion = prompt(parseInt("Desea pagar o consultar el saldo del puesto seleccionado?\nPagar saldo (1)\nConsultar saldo (2)\nSalir (3)"))
+            opcion = parseint(prompt("Desea pagar o consultar el saldo del puesto seleccionado?\nPagar saldo (1)\nConsultar saldo (2)\nSalir (3)"))
         }
         switch(opcion){
             case 1:
@@ -81,7 +81,7 @@ switch(opcion){
 
         break;
     case 2:
-        lugar = prompt(parseInt("por favor ingrese un numero de mesa:\n\nMesas (Del 1 al 11)\nPuestos (Del 12 al 17)"));
+        lugar = parseint(prompt("por favor ingrese un numero de mesa:\n\nMesas (Del 1 al 11)\nPuestos (Del 12 al 17)"));
         Pedido(lugar)
         break;
     case 3:
