@@ -55,7 +55,6 @@ const PuestosIndex = (num) => {
 
 function PrintHTML(PuestoABuscar, AgregarSaldo){
         //Si encuentro el articulo en el array solo cambio el precio
-        //si no lo encuentro lo agrego
         //Si cancelo el precio saco el item del array
         let ul = document.getElementById("listaM");
         if(compare(parseInt(PuestoABuscar))){
