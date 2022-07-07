@@ -1,0 +1,64 @@
+.all{
+    display: grid;
+    grid-template-areas: 
+    "hdr hdr hdr"
+    "left left right"
+    ;
+    grid-template-columns: 33% 33% 34%;
+}
+
+#Input1{
+    width: 300px;
+    height: 20px;
+    background-color: blue;
+    color: aqua;
+}
+#Input2{
+    width: 300px;
+    height: 20px;
+    background-color: blue;
+    color: aqua;
+}
+.form_title{
+    color: red;
+    font-size: large;
+    padding: 50px;
+
+}
+
+#OK{
+    width: 100px;
+    height: 20px;
+    color: blue;
+    font-size: small;
+}
+
+.boton2{
+    width: 100px;
+    height: 20px;
+    color: red;
+    font-size: small;
+}
+
+.imagen{
+    width: 1000px;
+    height: 700px;
+    align-items: center;
+
+}
+
+.hdr{
+    grid-area: hdr;
+}
+
+.IMG{
+    grid-area: left;
+}
+
+
+#listaM{
+    color: darkblue;
+    font-size: large;
+    grid-area: right;
+    list-style: none;
+}
