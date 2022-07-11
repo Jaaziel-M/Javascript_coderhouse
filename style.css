@@ -5,6 +5,7 @@
     "left left right"
     ;
     grid-template-columns: 33% 33% 34%;
+    grid-template-rows: 200px;
 }
 
 #Input1{
@@ -22,7 +23,7 @@
 .form_title{
     color: red;
     font-size: large;
-    padding: 50px;
+    margin: 3px;
 
 }
 
@@ -33,7 +34,7 @@
     font-size: small;
 }
 
-.boton2{
+#cancel{
     width: 100px;
     height: 20px;
     color: red;
@@ -49,6 +50,7 @@
 
 .hdr{
     grid-area: hdr;
+
 }
 
 .IMG{
@@ -61,4 +63,9 @@
     font-size: large;
     grid-area: right;
     list-style: none;
+}
+.pagar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: center;
 }

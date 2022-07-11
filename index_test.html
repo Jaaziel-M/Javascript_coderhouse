@@ -14,18 +14,26 @@
     
     <header class="hdr">
         <form  id="formulario">
-            <div>
+            <div class="pagar">
                 <label class="form_title"  >Ingresá el puesto a ocupar</label>
                 <input id="Input1" type="number"/>
             </div>
-            <div>
+            <div class="pagar">
                 <label class="form_title"  >Ingresá el saldo a agregar  </label>
                 <input id="Input2" type="number"/>
             </div>
-            <div>            
+            <div class="pagar">            
                 <button id="OK" type="submit">OK</button>
+                <button type="reset" id="cancel" name="Cancel" value="Cancel">Cancel</button>
+            </div>
 
-                <button class="boton2" type="reset" id="cancel" name="Cancel" value="Cancel">Cancel</button>
+        </form>
+        
+        <form id="formulario2">
+            <div class="pagar">
+                <label class="form_title"  >Ingresá el puesto a Pagar</label>
+                <input id="Input3" type="number"/>
+                <button id="Pagar" type="submit">Pagar</button>
             </div>
         </form>
         
