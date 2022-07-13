@@ -3,9 +3,10 @@
     grid-template-areas: 
     "hdr hdr hdr"
     "left left right"
+    "foot foot foot"
     ;
     grid-template-columns: 33% 33% 34%;
-    grid-template-rows: 200px;
+    grid-template-rows: 200px 700px 150px;
 }
 
 #Input1{
@@ -68,4 +69,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     align-self: center;
+}
+#footr{
+    grid-area: foot;
 }
