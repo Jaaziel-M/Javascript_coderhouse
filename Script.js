@@ -34,10 +34,11 @@ function compare(parametro){
 const PuestosIndex = (num) => {
         i=0
         for (item of Puestos){
+                // aca quise aplicar una optimización pero por algun motivo, el return no me lo permitía
                 if("Puesto "+num == item.CodMesa){
                         return parseInt(i);
                 }
-                i++;
+                i++
         }
         return undefined;
 }
@@ -46,7 +47,6 @@ const PuestosIndex = (num) => {
 
 function PrintHTML(PuestoABuscar, AgregarSaldo){
         //Si encuentro el articulo en el array solo cambio el precio
-        // let ul = document.getElementById("listaM");
         if(compare(parseInt(PuestoABuscar))){
                 // actualizo el saldo en el array
                 //buscar en el listado de items que hay en el ul el que matchea con este e imprimir nuevamente desde el array con saldo actualizado
@@ -54,14 +54,16 @@ function PrintHTML(PuestoABuscar, AgregarSaldo){
                 var liencontrado = undefined;
                 //Buscador en el Array de Li
                 for (ingreso of lista.children){
-                        if (parseInt(PuestoABuscar) == ingreso.innerHTML[7]+ingreso.innerHTML[8]){
-                                liencontrado = licounter;
-                        }
-                        else{
-                                licounter = licounter +1;
-                        }
+                        
+                        //operador ternario en lugar del if else de abajo
+                        (parseInt(PuestoABuscar) == ingreso.innerHTML[7]+ingreso.innerHTML[8]) ? (liencontrado = licounter) : (licounter = licounter +1)
+                        //if (parseInt(PuestoABuscar) == ingreso.innerHTML[7]+ingreso.innerHTML[8]){
+                        //        liencontrado = licounter;
+                        //}
+                        //else{
+                        //        licounter = licounter +1;
+                        //}
                 }
-                //el problema que aparece ahora es que hay que sincronizar el status del print en html y el array.
                 if(liencontrado == undefined){
                         let item = document.createElement("li");
                         item.innerHTML = "Puesto "+PuestoABuscar+" Ocupada    Saldo  $"+AgregarSaldo;
@@ -86,15 +88,23 @@ function Pagar(PuestoABuscar){
         let IndexHTML = undefined;
         let BufferSaldo = 0
         if(PuestosIndex(PuestoABuscar)==undefined){
-                alert("Error en el ingreso, por favor ingrese nuevamente con una mesa que actualmente tenga saldo disponible!")
+                //alert("Error en el ingreso, por favor ingrese nuevamente con una mesa que actualmente tenga saldo disponible!")
+                swal({
+                        title: "Error!",
+                        text: "Por favor seleccioná una mesa que esté registrada y con saldo acumulado",
+                        icon: "error",
+
+                })
                 return undefined
         }
         BufferSaldo = Puestos[PuestosIndex(PuestoABuscar)].Saldo;
-        Puestos.splice(PuestosIndex(PuestoABuscar),1)
+        Puestos.splice(PuestosIndex(PuestoABuscar),1);
         for (hijo of lista.children){
-                if (hijo.innerHTML[7]+hijo.innerHTML[8] == parseInt(PuestoABuscar)){
-                        IndexHTML = i;
-                }
+                //aplicación de un and para reemplazar un if 
+                (hijo.innerHTML[7]+hijo.innerHTML[8] == parseInt(PuestoABuscar)) && (IndexHTML = i)
+                //if (hijo.innerHTML[7]+hijo.innerHTML[8] == parseInt(PuestoABuscar)){
+                //        IndexHTML = i;
+                //}
                 i++
         }
         lista.children[IndexHTML].remove()
@@ -120,6 +130,7 @@ for (let k=0; k < localStorage.length; k++){
 }
 
 
+
 // acciones de los inputs de pagar y de ingreso de saldos 
 function gestion(event){
         event.preventDefault();
@@ -127,7 +138,12 @@ function gestion(event){
         input2 = document.getElementById("Input2").value;       
         input3 = document.getElementById("Input3").value;
         if(((input1<1)||(input1>17)) || ((input2<1))){
-                alert("Error! por favor ingrese un valor entre 1 y 17 para los puestos y un numero positivo distinto de cero para el saldo.")
+                swal({
+                        title: "Error!",
+                        text: "Por favor, ingresá un valor entre 1 y 17 para los puestos y un numero positivo distinto de cero para el saldo.",
+                        icon: "error",
+
+                })
         }
         else{
                 if(compare(parseInt(input1))){
@@ -155,20 +171,49 @@ function gestion2(event){
 // La idea de este boton es al cerrar  el bar, se imprime el saldo recuadado y se borra toda la info del local storage. 
 EOD.onclick = () => {
         lista = document.getElementById("listaM");
-        
-        localStorage.clear()
-        let txts = document.getElementById("Txt1")
-        let msg = document.createElement("a")
-        msg.innerHTML="La recaudación total del día fue $"+RecaudacionDiaria
-        txts.appendChild(msg)
-        for (item of lista.children){
-                item.remove()
-        }
+        swal({
+                // Este es el mas elaborado, como no vimos el concepto de promesa (el then) lo dejo funcional aunque con 2 botones hasta que lo veamos! 
+                title: 'Finalizar el día?',
+                text: "Atención! al aceptar, se eliminaran los datos del día en curso",
+                icon: 'warning',
+                buttons:{
+                        cancel: "Cancelar",
+                        aceptar: {
+                                text: "Aceptar",
+                                value: "aceptar",
+                        },
+                        confirm: true,
+                }
+
+                }).then((value) => {
+                        
+                if (value) {
+                        localStorage.clear()
+                        swal({
+                        title: "La recaudación total del día fue $"+RecaudacionDiaria,
+                        icon: 'success',
+                        text: 'Se eliminaron los registros.'
+                        })
+                        for (item of lista.children){
+                                item.remove()}
+                }
+                })
 }
 
-// boton simple que muestra el saldo recaudado hasta el momento
+
+// boton simple que muestra el saldo recaudado hasta el momento como notificación
 ckeck.onclick = () => {
-        alert("La recaudación diaria hasta el momento es de: \n$"+RecaudacionDiaria)
+        //alert("La recaudación diaria hasta el momento es de: \n$"+RecaudacionDiaria)
+        Toastify({
+                text: "La recaudación diaria hasta el momento es de: \n$"+RecaudacionDiaria,
+                gravity: "bottom",
+                duration: 1000,
+                newWindow: false,
+                offset: {
+                  x: 30, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
+                  y: 180 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                },
+        }).showToast();
 }
 
 console.log("end")
