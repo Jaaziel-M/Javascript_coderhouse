@@ -73,3 +73,17 @@
 #footr{
     grid-area: foot;
 }
+#Buscar{
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: center;
+
+}
+#clear{
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: center;
+
+}
