@@ -17,37 +17,22 @@ function gestion3(event){
         return
     }
     
-
+    'algo'.includes
     fetch('datos/DB.json')
     .then((res)=>res.json())
     .then( (data)=> {
 
-        console.log("len de las keys antes del recorrido de la db: "+listulikey.length+" "+listulival.length)
-
-
         for (let i=0; i<data.length; i++){
-            for(item of Object.values(data[i])){
-                
-                if(item == input4){
+
+            for(let j=0; j<6;j++){
+                if((JSON.stringify(Object.values(data[i])[j])).includes(input4)){
                     listulikey.push((Object.keys(data[i])))
                     listulival.push((Object.values(data[i])))
+                
                 }
-            }
-
+            }//
         }
-        if(listado.childElementCount != 0){
 
-            console.log(listado.childNodes)
-            console.log(Object.values(listado.childNodes).length)
-            console.log("el ul tiene las siguientes Li: "+listado.childElementCount)
-            console.log(listado.childNodes[1])
-
-            for(let p=0; p<=Object.values(listado.childNodes).length; p++){
-                console.log(listado.childNodes[p])
-            }
-        }
-        console.log("len de las keys luego del recorrido de la db: "+listulikey.length+" "+listulival.length)
-        //
         for (i=0; i<listulikey.length; i++){
             console.log(listulikey.length)
             for(let j=0; j<6; j++){
@@ -57,7 +42,6 @@ function gestion3(event){
                 listado.appendChild(li);
             }
             br = document.createElement("br");
-            //li.innerHTML = ""
             listado.appendChild(br);
         }
     })
