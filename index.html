@@ -23,15 +23,15 @@
         <form  id="formulario">
             <div class="pagar">
                 <label class="form_title"  >Ingresá el puesto a ocupar</label>
-                <input id="Input1" type="number"/>
+                <input id="Input1" type="number" placeholder="Numero del 1 al 17"/>
             </div>
             <div class="pagar">
                 <label class="form_title"  >Ingresá el saldo a agregar  </label>
-                <input id="Input2" type="number"/>
+                <input id="Input2" type="number" placeholder="Numero mayor que 0"/>
             </div>
             <div class="pagar">            
-                <button id="OK" type="submit">OK</button>
-                <button type="reset" id="cancel" name="Cancel" value="Cancel">Cancel</button>
+                <button id="OK" type="submit" class="btn btn-success">OK</button>
+                <button type="reset" id="cancel" name="Cancel" value="Cancel" class="btn btn-danger">Cancel</button>
             </div>
 
         </form>
@@ -40,13 +40,30 @@
             <div class="pagar">
                 <label class="form_title"  >Ingresá el puesto a Pagar</label>
                 <input id="Input3" type="number"/>
-                <button id="Pagar" type="submit">Pagar</button>
+                <button id="Pagar" type="submit" class="btn btn-primary">Pagar</button>
             </div>
         </form>
         
     </header>
     
-
+    <div class="help">
+        <h2 class="helptitle">Hola! </h2>
+        <p class="helptxt">
+            Esta es una pequeña app que simula un programa de reservas para un bar. En base al plano, podrás ingresar uno de los puestos y agregarle el saldo correspondiente, el mismo se mostrará a la derecha en forma de listado. 
+            
+        </p class="helptxt">
+        <p class="helptxt">
+            Si la mesa ya se encuentra en uso, el importe agregado se sumará al importe final de la mesa. 
+            En la sección de pagos, solo tendrás que seleccionar cual es la mesa que se saldará y la misma volverá a estar disponible. 
+        </p>
+        <p class="helptxt">
+            Debajo encontrarás un botón que te indicará el importe recaudado hasta el momento y otro para finalizar la recaudación del día liberando el almacenamiento para empezar un nuevo día. 
+            ¿Actualizaste la pagina por accidente? Sin problemas! el progreso de las reservas NO se eliminará :D
+        </p>
+        <p class="helptxt">
+            Por ultimo, disponés de un link que te llevará a nuestro buscador, clickealo para mas Info!! 
+        </p>
+    </div>
     
     <div class="IMG">
         <img class="imagen" src="Plano.jpg" alt="">
@@ -59,9 +76,9 @@
     </ul>
 
     <footer id="footr">
-        <div>
-            <button id="EOD">Cierre del día</button>
-            <button id="Recaudacion">Recaudacion hasta el momento</button>
+        <div id="btngp">
+            <button id="EOD" class="btn btn-warning">Cierre del día</button>
+            <button id="Recaudacion" class="btn btn-warning">Recaudacion hasta el momento</button>
         </div>
         <div>
             <a href="depo.html">STOCK EN DEPOSITO</a>
@@ -69,6 +86,5 @@
     </footer>
     <script src="Script.js"></script> 
     
-
 </body>
 </html>

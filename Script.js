@@ -34,7 +34,6 @@ function compare(parametro){
 const PuestosIndex = (num) => {
         i=0
         for (item of Puestos){
-                // aca quise aplicar una optimización pero por algun motivo, el return no me lo permitía
                 if("Puesto "+num == item.CodMesa){
                         return parseInt(i);
                 }
@@ -54,15 +53,7 @@ function PrintHTML(PuestoABuscar, AgregarSaldo){
                 var liencontrado = undefined;
                 //Buscador en el Array de Li
                 for (ingreso of lista.children){
-                        
-                        //operador ternario en lugar del if else de abajo
                         (parseInt(PuestoABuscar) == ingreso.innerHTML[7]+ingreso.innerHTML[8]) ? (liencontrado = licounter) : (licounter = licounter +1)
-                        //if (parseInt(PuestoABuscar) == ingreso.innerHTML[7]+ingreso.innerHTML[8]){
-                        //        liencontrado = licounter;
-                        //}
-                        //else{
-                        //        licounter = licounter +1;
-                        //}
                 }
                 if(liencontrado == undefined){
                         let item = document.createElement("li");
@@ -72,7 +63,6 @@ function PrintHTML(PuestoABuscar, AgregarSaldo){
                 else{
                         lista.children[liencontrado].innerHTML = Puestos[PuestosIndex(PuestoABuscar)].CodMesa+" Ocupada    Saldo  $"+Puestos[PuestosIndex(PuestoABuscar)].Saldo;
                 }
-                //lista.children[liencontrado].innerHTML = Puestos[PuestosIndex(PuestoABuscar)].CodMesa+" Ocupada    Saldo  $"+Puestos[PuestosIndex(PuestoABuscar)].Saldo;
         }
         else{
                 let item = document.createElement("li");
@@ -88,7 +78,6 @@ function Pagar(PuestoABuscar){
         let IndexHTML = undefined;
         let BufferSaldo = 0
         if(PuestosIndex(PuestoABuscar)==undefined){
-                //alert("Error en el ingreso, por favor ingrese nuevamente con una mesa que actualmente tenga saldo disponible!")
                 swal({
                         title: "Error!",
                         text: "Por favor seleccioná una mesa que esté registrada y con saldo acumulado",
@@ -100,11 +89,7 @@ function Pagar(PuestoABuscar){
         BufferSaldo = Puestos[PuestosIndex(PuestoABuscar)].Saldo;
         Puestos.splice(PuestosIndex(PuestoABuscar),1);
         for (hijo of lista.children){
-                //aplicación de un and para reemplazar un if 
                 (hijo.innerHTML[7]+hijo.innerHTML[8] == parseInt(PuestoABuscar)) && (IndexHTML = i)
-                //if (hijo.innerHTML[7]+hijo.innerHTML[8] == parseInt(PuestoABuscar)){
-                //        IndexHTML = i;
-                //}
                 i++
         }
         lista.children[IndexHTML].remove()
@@ -203,7 +188,6 @@ EOD.onclick = () => {
 
 // boton simple que muestra el saldo recaudado hasta el momento como notificación
 ckeck.onclick = () => {
-        //alert("La recaudación diaria hasta el momento es de: \n$"+RecaudacionDiaria)
         Toastify({
                 text: "La recaudación diaria hasta el momento es de: \n$"+RecaudacionDiaria,
                 gravity: "bottom",

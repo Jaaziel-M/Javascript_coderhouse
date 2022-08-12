@@ -13,11 +13,15 @@ function gestion3(event){
     event.preventDefault();
     input4 = document.getElementById("Input4").value;
     if (input4 == ""){
-        console.log("no ingresaste nada titan!")
-        return
+        Toastify({
+            text: "Por favor ingresa un parametro de busqueda",
+            gravity: "bottom",
+            duration: 1000,
+            newWindow: false,
+            
+            }).showToast();
+        }
     }
-    
-    'algo'.includes
     fetch('datos/DB.json')
     .then((res)=>res.json())
     .then( (data)=> {
@@ -45,7 +49,7 @@ function gestion3(event){
             listado.appendChild(br);
         }
     })
-}
+
 clear.onclick = () =>{
     location.reload()
 }
