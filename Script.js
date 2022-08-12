@@ -157,7 +157,6 @@ function gestion2(event){
 EOD.onclick = () => {
         lista = document.getElementById("listaM");
         swal({
-                // Este es el mas elaborado, como no vimos el concepto de promesa (el then) lo dejo funcional aunque con 2 botones hasta que lo veamos! 
                 title: 'Finalizar el día?',
                 text: "Atención! al aceptar, se eliminaran los datos del día en curso",
                 icon: 'warning',
