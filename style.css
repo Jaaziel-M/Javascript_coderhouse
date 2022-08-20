@@ -122,7 +122,7 @@
     color: green;
 }
 .all2{
-    background-image: linear-gradient(black, grey);
+    background-image: linear-gradient(black, rgb(76, 76, 76));
 }
 .lista2{
     color: rgb(25, 226, 219);

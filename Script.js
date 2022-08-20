@@ -45,13 +45,9 @@ const PuestosIndex = (num) => {
 // funcion para recorrer el array ver cual tiene saldo cero y eliminar ese item del html
 
 function PrintHTML(PuestoABuscar, AgregarSaldo){
-        //Si encuentro el articulo en el array solo cambio el precio
         if(compare(parseInt(PuestoABuscar))){
-                // actualizo el saldo en el array
-                //buscar en el listado de items que hay en el ul el que matchea con este e imprimir nuevamente desde el array con saldo actualizado
                 let licounter = 0;
                 var liencontrado = undefined;
-                //Buscador en el Array de Li
                 for (ingreso of lista.children){
                         (parseInt(PuestoABuscar) == ingreso.innerHTML[7]+ingreso.innerHTML[8]) ? (liencontrado = licounter) : (licounter = licounter +1)
                 }
@@ -153,7 +149,7 @@ function gestion2(event){
         }
         
 }
-// La idea de este boton es al cerrar  el bar, se imprime el saldo recuadado y se borra toda la info del local storage. 
+
 EOD.onclick = () => {
         lista = document.getElementById("listaM");
         swal({
@@ -174,9 +170,9 @@ EOD.onclick = () => {
                 if (value) {
                         localStorage.clear()
                         swal({
-                        title: "La recaudación total del día fue $"+RecaudacionDiaria,
-                        icon: 'success',
-                        text: 'Se eliminaron los registros.'
+                                title: "La recaudación total del día fue $"+RecaudacionDiaria,
+                                icon: 'success',
+                                text: 'Se eliminaron los registros.'
                         })
                         for (item of lista.children){
                                 item.remove()}
@@ -184,8 +180,6 @@ EOD.onclick = () => {
                 })
 }
 
-
-// boton simple que muestra el saldo recaudado hasta el momento como notificación
 ckeck.onclick = () => {
         Toastify({
                 text: "La recaudación diaria hasta el momento es de: \n$"+RecaudacionDiaria,
@@ -193,8 +187,8 @@ ckeck.onclick = () => {
                 duration: 1000,
                 newWindow: false,
                 offset: {
-                  x: 30, // horizontal axis - can be a number or a string indicating unity. eg: '2em'
-                  y: 180 // vertical axis - can be a number or a string indicating unity. eg: '2em'
+                        x: 30,
+                        y: 180
                 },
         }).showToast();
 }
